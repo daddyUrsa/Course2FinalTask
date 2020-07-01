@@ -31,28 +31,17 @@ class FeedView: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         }
     }
 
-//    func getUserName(userId: User.Identifier) -> String {
-//        var userName: String
-//        for (index, valuePost) in posts.enumerated() {
-//            if valuePost.author == userId {
-////                guard let users = users else { return }
-////                userName = users[index].filter { $0 }
-//            }
-//        }
-//        return ""
-//    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "Feed"
         allPostsFollowedUsers()
         collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = .cyan
+        collectionView.backgroundColor = .white
         collectionView.register(FeedCustomCell.self, forCellWithReuseIdentifier: cellId)
 //        users?.forEach { print($0.id) }
 //        allPosts.forEach { print("\($0.id) \($0.author)") }
-        print(posts)
+//        print(posts)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,13 +52,16 @@ class FeedView: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCustomCell
 
         cell.userName.text = posts[indexPath.item].authorUsername
+        cell.userAvatar.image = posts[indexPath.item].authorAvatar
         cell.postImage.image = posts[indexPath.item].image
-        print(posts[indexPath.item].authorUsername)
+        cell.likesCountsLabel.text = "Likes: \(posts[indexPath.item].likedByCount)"
+        cell.postDescriptionLabel.text = posts[indexPath.item].description
+//        print(posts[indexPath.item].authorUsername)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 385)
+        return CGSize(width: view.frame.width, height: 475)
     }
 }
 
@@ -89,7 +81,3 @@ class FeedCell: UICollectionViewCell {
         backgroundColor = .brown
     }
 }
-
-/*
- Проходим по usersFollowedByUser и достаем все идентификаторы. Потом проходим про feed  и выдергиваем массив все посты с id тех юзеров. Этот массив сортируем и выводим
- */
