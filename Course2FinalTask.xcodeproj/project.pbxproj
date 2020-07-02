@@ -67,6 +67,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31CD6ECB24AEA980001C30C8 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				317181E624A5472100201349 /* FeedView.swift */,
+				8FF4983024AE2AB2009103E7 /* FeedViewController.swift */,
+				8FF4983224AE5A6C009103E7 /* FeedViewController+DataSource.swift */,
+				8FF4983424AE6777009103E7 /* FeedViewController+Delegate.swift */,
+				8FD67C9E24ACBF7C00BBD94E /* FeedCustomCell.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		31CD6ECC24AEAA4A001C30C8 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				317181E724A5472100201349 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		74B7924B202B3254006BCB41 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +107,8 @@
 		74B79256202B3254006BCB41 /* Course2FinalTask */ = {
 			isa = PBXGroup;
 			children = (
+				31CD6ECC24AEAA4A001C30C8 /* Profile */,
+				31CD6ECB24AEA980001C30C8 /* Feed */,
 				8F58592124A78C430061C86C /* Task */,
 				74B7927B202B3427006BCB41 /* Code */,
 				74B7927C202B342E006BCB41 /* Resources */,
@@ -100,14 +122,8 @@
 			children = (
 				74B79257202B3254006BCB41 /* AppDelegate.swift */,
 				8FF4982C24AE20C0009103E7 /* MainNavigationController.swift */,
-				317181E624A5472100201349 /* FeedView.swift */,
-				8FF4983024AE2AB2009103E7 /* FeedViewController.swift */,
-				8FF4983224AE5A6C009103E7 /* FeedViewController+DataSource.swift */,
-				8FF4983424AE6777009103E7 /* FeedViewController+Delegate.swift */,
-				8FD67C9E24ACBF7C00BBD94E /* FeedCustomCell.swift */,
 				317181E824A5472100201349 /* TabBarComtroller.swift */,
 				8FF4982E24AE2A1E009103E7 /* TestController.swift */,
-				317181E724A5472100201349 /* ProfileView.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";

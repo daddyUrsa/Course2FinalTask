@@ -29,7 +29,6 @@ class FeedViewController: UIViewController {
         allPostsFollowedUsers()
         setupViews()
         setupConstraints()
-        print(allPosts)
     }
 }
 
