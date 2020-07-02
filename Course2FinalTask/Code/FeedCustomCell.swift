@@ -113,9 +113,9 @@ class FeedCustomCell: UICollectionViewCell {
                            postTime.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 5),
 
                            postImage.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 10),
-                           postImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-                           postImage.widthAnchor.constraint(equalToConstant: 312),
-                           postImage.heightAnchor.constraint(equalToConstant: 312),
+                           postImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                           postImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+//                           postImage.heightAnchor.constraint(equalToConstant: 312),
                            
                            likesCountsLabel.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 15),
                            likesCountsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),

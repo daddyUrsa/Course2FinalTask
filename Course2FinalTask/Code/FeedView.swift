@@ -10,15 +10,17 @@ import UIKit
 import DataProvider
 import DataProvider.Swift
 
-let cellId = "cellId"
 
 class FeedView: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    let cellId = "cellId"
+
     let users = DataProviders.shared.usersDataProvider.usersFollowingUser(with: DataProviders.shared.usersDataProvider.currentUser().id)
-//    let allUsers = DataProviders.shared.usersDataProvider.
+
     let posts = DataProviders.shared.postsDataProvider.feed()
 
     var allPosts: [Post] = []
+
 
     func allPostsFollowedUsers() {
         guard let users = users else { return }
@@ -31,6 +33,8 @@ class FeedView: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         }
     }
 
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +46,8 @@ class FeedView: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 //        users?.forEach { print($0.id) }
 //        allPosts.forEach { print("\($0.id) \($0.author)") }
 //        print(posts)
+
+
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -56,12 +62,22 @@ class FeedView: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         cell.postImage.image = posts[indexPath.item].image
         cell.likesCountsLabel.text = "Likes: \(posts[indexPath.item].likedByCount)"
         cell.postDescriptionLabel.text = posts[indexPath.item].description
-//        print(posts[indexPath.item].authorUsername)
+
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 475)
+    }
+
+    override func viewWillLayoutSubviews() {
+      super.viewWillLayoutSubviews()
+      collectionView.frame = CGRect(
+        x: 0,
+        y: 0,
+        width: view.frame.width,
+        height: view.frame.height
+      )
     }
 }
 
@@ -81,3 +97,4 @@ class FeedCell: UICollectionViewCell {
         backgroundColor = .brown
     }
 }
+

@@ -20,13 +20,13 @@ class TabBarController: UITabBarController {
 extension TabBarController {
     
     func tabsSetup() {
-        let firstTabView = FeedView()
+        let firstTabView = FeedViewController()
         let secondTabView = ProfileView()
         
         firstTabView.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 0)
         secondTabView.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 1)
      
         let tabBarList = [firstTabView, secondTabView]
-        viewControllers = tabBarList
+        self.viewControllers = tabBarList
     }
 }
