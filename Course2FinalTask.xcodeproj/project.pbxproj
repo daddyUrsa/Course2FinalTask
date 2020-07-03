@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		314ACC5A24AF3BCA00FBEE7D /* PhotoPostsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314ACC5924AF3BCA00FBEE7D /* PhotoPostsCustomCell.swift */; };
+		314ACC5C24AF3E3500FBEE7D /* ProfileViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314ACC5B24AF3E3500FBEE7D /* ProfileViewController+DataSource.swift */; };
+		314ACC5E24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314ACC5D24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift */; };
+		314ACC6024AFBBAB00FBEE7D /* CustomProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314ACC5F24AFBBAB00FBEE7D /* CustomProfileCell.swift */; };
 		317181E924A5472100201349 /* FeedView---.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E624A5472100201349 /* FeedView---.swift */; };
 		317181EA24A5472100201349 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E724A5472100201349 /* ProfileViewController.swift */; };
 		317181EB24A5472100201349 /* TabBarComtroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E824A5472100201349 /* TabBarComtroller.swift */; };
@@ -38,6 +42,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		314ACC5924AF3BCA00FBEE7D /* PhotoPostsCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostsCustomCell.swift; sourceTree = "<group>"; };
+		314ACC5B24AF3E3500FBEE7D /* ProfileViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+DataSource.swift"; sourceTree = "<group>"; };
+		314ACC5D24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Delegate.swift"; sourceTree = "<group>"; };
+		314ACC5F24AFBBAB00FBEE7D /* CustomProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileCell.swift; sourceTree = "<group>"; };
 		317181E624A5472100201349 /* FeedView---.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedView---.swift"; sourceTree = "<group>"; };
 		317181E724A5472100201349 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		317181E824A5472100201349 /* TabBarComtroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarComtroller.swift; sourceTree = "<group>"; };
@@ -83,6 +91,10 @@
 			isa = PBXGroup;
 			children = (
 				317181E724A5472100201349 /* ProfileViewController.swift */,
+				314ACC5B24AF3E3500FBEE7D /* ProfileViewController+DataSource.swift */,
+				314ACC5D24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift */,
+				314ACC5924AF3BCA00FBEE7D /* PhotoPostsCustomCell.swift */,
+				314ACC5F24AFBBAB00FBEE7D /* CustomProfileCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -220,13 +232,17 @@
 				8FF4982D24AE20C0009103E7 /* MainNavigationController.swift in Sources */,
 				8FF4983524AE6777009103E7 /* FeedViewController+Delegate.swift in Sources */,
 				317181EB24A5472100201349 /* TabBarComtroller.swift in Sources */,
+				314ACC5A24AF3BCA00FBEE7D /* PhotoPostsCustomCell.swift in Sources */,
 				317181E924A5472100201349 /* FeedView---.swift in Sources */,
 				8FF4983324AE5A6C009103E7 /* FeedViewController+DataSource.swift in Sources */,
 				317181EA24A5472100201349 /* ProfileViewController.swift in Sources */,
 				74B79258202B3254006BCB41 /* AppDelegate.swift in Sources */,
 				8FD67C9F24ACBF7C00BBD94E /* FeedCustomCell.swift in Sources */,
+				314ACC6024AFBBAB00FBEE7D /* CustomProfileCell.swift in Sources */,
 				8FF4983124AE2AB2009103E7 /* FeedViewController.swift in Sources */,
+				314ACC5E24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift in Sources */,
 				8FF4982F24AE2A1E009103E7 /* TestController.swift in Sources */,
+				314ACC5C24AF3E3500FBEE7D /* ProfileViewController+DataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

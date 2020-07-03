@@ -126,8 +126,6 @@ class FeedCustomCell: UICollectionViewCell {
                            postDescriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
                            postDescriptionLabel.heightAnchor.constraint(equalToConstant: 40)
                            ])
-    }
 
-    
-   
+    }
 }

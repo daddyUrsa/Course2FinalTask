@@ -5,14 +5,23 @@
 //  Created by Alexey Golovin on 25.06.2020.
 //  Copyright © 2020 e-Legion. All rights reserved.
 //
-
 import UIKit
 import DataProvider
 import DataProvider.Swift
 
 class ProfileViewController: UIViewController {
     
-    let user = DataProviders.shared.usersDataProvider.currentUser()
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .yellow
+        collectionView.register(CustomProfileCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.alwaysBounceVertical = true
+        return collectionView
+    }()
     
     private var userAvatar: UIImageView = {
         let userAvatar = UIImageView()
@@ -69,6 +78,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(userName)
         view.addSubview(followersTL)
         view.addSubview(followingTL)
+        view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([userAvatar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
                                      userAvatar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
@@ -82,7 +92,12 @@ class ProfileViewController: UIViewController {
                                      followersTL.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
                                      
                                      followingTL.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-                                     followingTL.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50)
+                                     followingTL.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+                                     
+                                     collectionView.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 8),
+                                     collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     collectionView.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
 
