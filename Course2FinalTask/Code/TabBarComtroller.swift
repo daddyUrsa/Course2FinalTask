@@ -13,20 +13,11 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tabsSetup()
+        
     }
 }
 
 extension TabBarController {
     
-    func tabsSetup() {
-        let firstTabView = FeedViewController()
-        let secondTabView = ProfileView()
-        
-        firstTabView.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 0)
-        secondTabView.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 1)
-     
-        let tabBarList = [firstTabView, secondTabView]
-        self.viewControllers = tabBarList
-    }
+
 }

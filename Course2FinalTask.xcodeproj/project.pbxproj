@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		317181E924A5472100201349 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E624A5472100201349 /* FeedView.swift */; };
-		317181EA24A5472100201349 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E724A5472100201349 /* ProfileView.swift */; };
+		317181E924A5472100201349 /* FeedView---.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E624A5472100201349 /* FeedView---.swift */; };
+		317181EA24A5472100201349 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E724A5472100201349 /* ProfileViewController.swift */; };
 		317181EB24A5472100201349 /* TabBarComtroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E824A5472100201349 /* TabBarComtroller.swift */; };
 		7484B05420441FD000BDE1A6 /* DataProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7484B05320441FD000BDE1A6 /* DataProvider.framework */; };
 		7484B05520441FD000BDE1A6 /* DataProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7484B05320441FD000BDE1A6 /* DataProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -38,8 +38,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		317181E624A5472100201349 /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
-		317181E724A5472100201349 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		317181E624A5472100201349 /* FeedView---.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedView---.swift"; sourceTree = "<group>"; };
+		317181E724A5472100201349 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		317181E824A5472100201349 /* TabBarComtroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarComtroller.swift; sourceTree = "<group>"; };
 		7484B05320441FD000BDE1A6 /* DataProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DataProvider.framework; sourceTree = "<group>"; };
 		74B79254202B3254006BCB41 /* Course2FinalTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Course2FinalTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +70,7 @@
 		31CD6ECB24AEA980001C30C8 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				317181E624A5472100201349 /* FeedView.swift */,
+				317181E624A5472100201349 /* FeedView---.swift */,
 				8FF4983024AE2AB2009103E7 /* FeedViewController.swift */,
 				8FF4983224AE5A6C009103E7 /* FeedViewController+DataSource.swift */,
 				8FF4983424AE6777009103E7 /* FeedViewController+Delegate.swift */,
@@ -82,7 +82,7 @@
 		31CD6ECC24AEAA4A001C30C8 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				317181E724A5472100201349 /* ProfileView.swift */,
+				317181E724A5472100201349 /* ProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -107,9 +107,9 @@
 		74B79256202B3254006BCB41 /* Course2FinalTask */ = {
 			isa = PBXGroup;
 			children = (
+				8F58592124A78C430061C86C /* Task */,
 				31CD6ECC24AEAA4A001C30C8 /* Profile */,
 				31CD6ECB24AEA980001C30C8 /* Feed */,
-				8F58592124A78C430061C86C /* Task */,
 				74B7927B202B3427006BCB41 /* Code */,
 				74B7927C202B342E006BCB41 /* Resources */,
 				74B7927D202B3434006BCB41 /* Supporting Files */,
@@ -220,9 +220,9 @@
 				8FF4982D24AE20C0009103E7 /* MainNavigationController.swift in Sources */,
 				8FF4983524AE6777009103E7 /* FeedViewController+Delegate.swift in Sources */,
 				317181EB24A5472100201349 /* TabBarComtroller.swift in Sources */,
-				317181E924A5472100201349 /* FeedView.swift in Sources */,
+				317181E924A5472100201349 /* FeedView---.swift in Sources */,
 				8FF4983324AE5A6C009103E7 /* FeedViewController+DataSource.swift in Sources */,
-				317181EA24A5472100201349 /* ProfileView.swift in Sources */,
+				317181EA24A5472100201349 /* ProfileViewController.swift in Sources */,
 				74B79258202B3254006BCB41 /* AppDelegate.swift in Sources */,
 				8FD67C9F24ACBF7C00BBD94E /* FeedCustomCell.swift in Sources */,
 				8FF4983124AE2AB2009103E7 /* FeedViewController.swift in Sources */,

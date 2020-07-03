@@ -36,7 +36,7 @@ private extension FeedViewController {
 
     func setupViews() {
 
-//        title = navBarTitle
+        navigationController?.navigationBar.topItem?.title = "Feed"
 
         view.addSubview(collectionView)
     }

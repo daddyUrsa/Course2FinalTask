@@ -22,9 +22,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let feedController = FeedView(collectionViewLayout: UICollectionViewFlowLayout())
         let navigationController = UINavigationController(rootViewController: feedController)
 */
+        let tabBarController = UITabBarController()
+        
+        let feedController = FeedViewController()
+        let profileController = ProfileViewController()
+        let feedNavgationController = MainNavigationController()
+        let profileNavgationController = MainNavigationController()
+        
+        feedNavgationController.viewControllers = [feedController]
+        profileNavgationController.viewControllers = [profileController]
+        
+        feedNavgationController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 0)
+        profileNavgationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 1)
+        
+//        let tabBarList = [feedController, profileController]
+        tabBarController.viewControllers = [feedNavgationController, profileNavgationController]
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = TabBarController()   
+        window?.rootViewController = tabBarController
 
         return true
     }

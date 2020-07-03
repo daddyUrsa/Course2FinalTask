@@ -18,6 +18,11 @@ let posts = DataProviders.shared.postsDataProvider.feed()
 
 var allPosts: [Post] = []
 
+func getFormattedDate(date: Date, format: String) -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: date)
+}
 
 func allPostsFollowedUsers() {
     guard let users = users else { return }
@@ -30,7 +35,6 @@ func allPostsFollowedUsers() {
     }
 }
 
-
 extension FeedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allPosts.count
@@ -41,9 +45,13 @@ extension FeedViewController: UICollectionViewDataSource {
 
         cell.userName.text = posts[indexPath.item].authorUsername
         cell.userAvatar.image = posts[indexPath.item].authorAvatar
+        cell.postTime.text = getFormattedDate(date: posts[indexPath.item].createdTime, format: "MMM d, YYYY") + " at " + getFormattedDate(date: posts[indexPath.item].createdTime, format: "h:mm:ss a")
         cell.postImage.image = posts[indexPath.item].image
         cell.likesCountsLabel.text = "Likes: \(posts[indexPath.item].likedByCount)"
         cell.postDescriptionLabel.text = posts[indexPath.item].description
+        if posts[indexPath.item].currentUserLikesThisPost != true {
+            cell.likeIcon.tintColor = .darkGray
+        }
         cell.backgroundColor = .white 
         return cell
     }

@@ -11,7 +11,7 @@ import DataProvider
 import DataProvider.Swift
 
 
-class FeedView: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class FeedViewmmm: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     let cellId = "cellId"
 

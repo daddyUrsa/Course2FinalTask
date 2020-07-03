@@ -10,7 +10,7 @@ import UIKit
 import DataProvider
 
 class FeedCustomCell: UICollectionViewCell {
-
+    
     var userAvatar: UIImageView = {
         let userAvatar = UIImageView()
         userAvatar.image = DataProviders.shared.usersDataProvider.currentUser().avatar
@@ -35,7 +35,6 @@ class FeedCustomCell: UICollectionViewCell {
         postTime.textAlignment = .left
         postTime.font = UIFont.systemFont(ofSize: 14)
         postTime.textColor = .black
-        postTime.text = "02-07-2020"
         postTime.translatesAutoresizingMaskIntoConstraints = false
 
         return postTime
@@ -59,12 +58,10 @@ class FeedCustomCell: UICollectionViewCell {
         return likesCountsLabel
     }()
     
-    var likeIcon: UIImageView = {
-        let likeIcon = UIImageView()
-        likeIcon.image = UIImage(named: "like")
-//        likeIcon.contentMode = .scaleToFill
+    var likeIcon: UIButton = {
+        let likeIcon = UIButton()
+        likeIcon.setImage(UIImage(named: "like"), for: .normal)
         likeIcon.translatesAutoresizingMaskIntoConstraints = false
-        
         return likeIcon
     }()
     
@@ -79,9 +76,19 @@ class FeedCustomCell: UICollectionViewCell {
         return postDescriptionLabel
     }()
     
-
     override init(frame: CGRect) {
         super.init(frame: .zero)
+
+        setupViews()
+
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
+        
         contentView.addSubview(userAvatar)
         contentView.addSubview(userName)
         contentView.addSubview(postTime)
@@ -89,18 +96,7 @@ class FeedCustomCell: UICollectionViewCell {
         contentView.addSubview(likesCountsLabel)
         contentView.addSubview(postDescriptionLabel)
         contentView.addSubview(likeIcon)
-
-//        backgroundColor = .green
-        setupViews()
-//        print(contentView.layer.)
-//        print(contentView.frame)
-
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    func setupViews() {
+        
         NSLayoutConstraint.activate([userAvatar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
                            userAvatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
                            userAvatar.widthAnchor.constraint(equalToConstant: 44),
@@ -132,4 +128,6 @@ class FeedCustomCell: UICollectionViewCell {
                            ])
     }
 
+    
+   
 }
