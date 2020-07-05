@@ -26,7 +26,6 @@ class FeedCustomCell: UICollectionViewCell {
         userName.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         userName.textColor = .black
         userName.translatesAutoresizingMaskIntoConstraints = false
-
         return userName
     }()
 
@@ -42,7 +41,6 @@ class FeedCustomCell: UICollectionViewCell {
 
     let postImage: UIImageView = {
         let postImage = UIImageView()
-        postImage.image = DataProviders.shared.postsDataProvider.post(with: Post.Identifier(rawValue: "25"))?.image
         postImage.contentMode = .scaleAspectFit
         postImage.translatesAutoresizingMaskIntoConstraints = false
 
@@ -61,6 +59,7 @@ class FeedCustomCell: UICollectionViewCell {
     var likeIcon: UIButton = {
         let likeIcon = UIButton()
         likeIcon.setImage(UIImage(named: "like"), for: .normal)
+        likeIcon.addTarget(self, action: #selector(likeTapped), for: .touchUpInside)
         likeIcon.translatesAutoresizingMaskIntoConstraints = false
         return likeIcon
     }()
@@ -75,6 +74,7 @@ class FeedCustomCell: UICollectionViewCell {
 
         return postDescriptionLabel
     }()
+
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -85,6 +85,10 @@ class FeedCustomCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func likeTapped() {
+//        DataProviders.shared.postsDataProvider.likePost(with: <#T##Post.Identifier#>)
     }
     
     func setupViews() {
