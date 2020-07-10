@@ -11,6 +11,8 @@ import DataProvider.Swift
 
 class ProfileViewController: UIViewController {
     
+    var receivedUser: User = DataProviders.shared.usersDataProvider.currentUser()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -25,7 +27,6 @@ class ProfileViewController: UIViewController {
     
     private var userAvatar: UIImageView = {
         let userAvatar = UIImageView()
-        userAvatar.image = DataProviders.shared.usersDataProvider.currentUser().avatar
         userAvatar.contentMode = .scaleAspectFit
         userAvatar.translatesAutoresizingMaskIntoConstraints = false
 
@@ -36,7 +37,6 @@ class ProfileViewController: UIViewController {
         var userName = UILabel()
         userName.textAlignment = .left
         userName.font = UIFont.systemFont(ofSize: 14)
-        userName.text = DataProviders.shared.usersDataProvider.currentUser().fullName
         userName.textColor = .black
         userName.translatesAutoresizingMaskIntoConstraints = false
 
@@ -48,7 +48,6 @@ class ProfileViewController: UIViewController {
         followersTL.textAlignment = .left
         followersTL.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         followersTL.textColor = .black
-        followersTL.text = "Followers: \(String(DataProviders.shared.usersDataProvider.currentUser().followedByCount))"
         followersTL.translatesAutoresizingMaskIntoConstraints = false
 
         return followersTL
@@ -59,7 +58,6 @@ class ProfileViewController: UIViewController {
         followingTL.textAlignment = .left
         followingTL.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         followingTL.textColor = .black
-        followingTL.text = "Followers: \(String(DataProviders.shared.usersDataProvider.currentUser().followsCount))"
         followingTL.translatesAutoresizingMaskIntoConstraints = false
 
         return followingTL
@@ -69,11 +67,18 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        navigationController?.navigationBar.topItem?.title = DataProviders.shared.usersDataProvider.currentUser().username
-        setupViews()
+        navigationController?.navigationBar.topItem?.title = receivedUser.username
+        
+        userAvatar.image = receivedUser.avatar
+        userName.text = receivedUser.fullName
+        followersTL.text = "Followers: \(receivedUser.followedByCount)"
+        followingTL.text = "Following: \(receivedUser.followsCount)"
+        
+        setupProfileViews()
+
     }
     
-    func setupViews() {
+    func setupProfileViews() {
         view.addSubview(userAvatar)
         view.addSubview(userName)
         view.addSubview(followersTL)
@@ -89,10 +94,10 @@ class ProfileViewController: UIViewController {
                                      userName.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 8),
                                      
                                      followersTL.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 8),
-                                     followersTL.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+                                     followersTL.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -8),
                                      
                                      followingTL.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-                                     followingTL.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+                                     followingTL.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -8),
                                      
                                      collectionView.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 8),
                                      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

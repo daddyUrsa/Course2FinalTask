@@ -12,18 +12,23 @@ import DataProvider.Swift
 
 let cellID = "cellId"
 
-let currentUserPosts = DataProviders.shared.postsDataProvider.findPosts(by: DataProviders.shared.usersDataProvider.currentUser().id)
 
 extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        guard let posts = DataProviders.shared.postsDataProvider.findPosts(by: receivedUser.id) else { return 0}
+        return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! CustomProfileCell
-        guard let currentUserPosts = currentUserPosts else { return cell }
+        guard let currentUserPosts = currentUserPost(user: receivedUser) else { return cell }
         cell.postImageCell.image = currentUserPosts[indexPath.item].image
         return cell
+    }
+    
+    func currentUserPost(user: User) -> [Post]? {
+        let currentUser = receivedUser.id
+        return DataProviders.shared.postsDataProvider.findPosts(by: currentUser)
     }
     
     

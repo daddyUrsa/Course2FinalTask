@@ -35,14 +35,14 @@ func allPostsFollowedUsers() {
     }
 }
 
-extension FeedViewController: UICollectionViewDataSource {
+extension FeedViewController: UICollectionViewDataSource, CellTappedDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allPosts.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCustomCell
-
+        cell.postID = posts[indexPath.item].id
         cell.userName.text = posts[indexPath.item].authorUsername
         cell.userAvatar.image = posts[indexPath.item].authorAvatar
         cell.postTime.text = getFormattedDate(date: posts[indexPath.item].createdTime, format: "MMM d, YYYY") + " at " + getFormattedDate(date: posts[indexPath.item].createdTime, format: "h:mm:ss a")
@@ -50,10 +50,26 @@ extension FeedViewController: UICollectionViewDataSource {
         cell.likesCountsLabel.text = "Likes: \(posts[indexPath.item].likedByCount)"
         cell.postDescriptionLabel.text = posts[indexPath.item].description
         if posts[indexPath.item].currentUserLikesThisPost != true {
-            cell.likeIcon.tintColor = .darkGray
+        cell.likeIcon.tintColor = .darkGray
         }
-        cell.backgroundColor = .white 
+        cell.backgroundColor = .white
+        cell.delegate = self
+        cell.userID = posts[indexPath.item].author
+        
         return cell
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! FeedCustomCell
+        cell.delegate?.showUserProfile(sender: posts[indexPath.item].author)
+    }
+    
+    func showUserProfile(sender: User.Identifier) {
+        let nextVC = ProfileViewController()
+        guard let user = DataProviders.shared.usersDataProvider.user(with: sender) else { return }
+        nextVC.receivedUser = user
+        
+        navigationController?.pushViewController(nextVC, animated: true)
+        print("User: \(sender)")
+    }
 }

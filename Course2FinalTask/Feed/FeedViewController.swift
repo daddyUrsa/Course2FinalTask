@@ -12,6 +12,8 @@ import DataProvider.Swift
 
 class FeedViewController: UIViewController {
 
+    let navBar = UINavigationController(rootViewController: TabBarController())
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -37,9 +39,7 @@ class FeedViewController: UIViewController {
 private extension FeedViewController {
 
     func setupViews() {
-
         navigationController?.navigationBar.topItem?.title = "Feed"
-
         view.addSubview(collectionView)
     }
 
