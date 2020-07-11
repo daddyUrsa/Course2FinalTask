@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
         let userAvatar = UIImageView()
         userAvatar.contentMode = .scaleAspectFit
         userAvatar.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return userAvatar
     }()
     
@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
         return userName
     }()
     
-    var followersTL: UILabel = {
+    lazy var followersTL: UILabel = {
         var followersTL = UILabel()
         followersTL.textAlignment = .left
         followersTL.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
@@ -66,6 +66,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupProfileViews()
+        loadData()
         view.backgroundColor = .white
         navigationController?.navigationBar.topItem?.title = receivedUser.username
         
@@ -73,9 +75,23 @@ class ProfileViewController: UIViewController {
         userName.text = receivedUser.fullName
         followersTL.text = "Followers: \(receivedUser.followedByCount)"
         followingTL.text = "Following: \(receivedUser.followsCount)"
-        
-        setupProfileViews()
 
+        let followersTLTap = UITapGestureRecognizer(target: self, action: #selector(followersTLTapped))
+        followersTL.isUserInteractionEnabled = true
+        followersTL.addGestureRecognizer(followersTLTap)
+
+        print("viewDidLoad ----- User ID: \(receivedUser.id.rawValue)")
+        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear ----- User ID: \(receivedUser.id.rawValue)")
+    }
+    
+    func loadData() {
+        // code to load data from network, and refresh the interface
+        collectionView.reloadData()
     }
     
     func setupProfileViews() {
@@ -106,4 +122,14 @@ class ProfileViewController: UIViewController {
         ])
     }
 
+}
+
+extension ProfileViewController {
+    @objc func followersTLTapped() {
+        print("tapped")
+        let nextVC = UsersTableViewController()
+//        guard let user = DataProviders.shared.usersDataProvider.user(with: receivedUser.id) else { return }
+//        nextVC.receivedUser = user
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
 }

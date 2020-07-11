@@ -65,11 +65,17 @@ extension FeedViewController: UICollectionViewDataSource, CellTappedDelegate {
     }
     
     func showUserProfile(sender: User.Identifier) {
-        let nextVC = ProfileViewController()
+        let profileView = ProfileViewController()
+        guard let nextVC = tabBarController else { return }
         guard let user = DataProviders.shared.usersDataProvider.user(with: sender) else { return }
-        nextVC.receivedUser = user
-        
-        navigationController?.pushViewController(nextVC, animated: true)
-        print("User: \(sender)")
+//        nextVC.receivedUser = user
+        nextVC.selectedIndex = 1
+        profileView.receivedUser = user
+        print("Readу to send ----- User ID: \(user.id.rawValue)")
+        profileView.viewDidLoad()
+
+//        navigationController?.pushViewController(nextVC, animated: true)
     }
+    
+    
 }

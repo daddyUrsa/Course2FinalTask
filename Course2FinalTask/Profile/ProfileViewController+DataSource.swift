@@ -30,8 +30,4 @@ extension ProfileViewController: UICollectionViewDataSource {
         let currentUser = receivedUser.id
         return DataProviders.shared.postsDataProvider.findPosts(by: currentUser)
     }
-    
-    
-    
-    
 }

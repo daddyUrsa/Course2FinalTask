@@ -16,12 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        print(UIScreen.main.bounds)
-
-/*
-        let feedController = FeedView(collectionViewLayout: UICollectionViewFlowLayout())
-        let navigationController = UINavigationController(rootViewController: feedController)
-*/
         let tabBarController = UITabBarController()
         
         let feedController = FeedViewController()
@@ -35,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         feedNavgationController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 0)
         profileNavgationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 1)
         
-//        let tabBarList = [feedController, profileController]
         tabBarController.viewControllers = [feedNavgationController, profileNavgationController]
         
         window = UIWindow(frame: UIScreen.main.bounds)

@@ -164,7 +164,7 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                            likeIcon.widthAnchor.constraint(equalToConstant: 44),
                            likeIcon.heightAnchor.constraint(equalToConstant: 44),
 
-                           likesCountsLabel.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 20),
+                           likesCountsLabel.centerYAnchor.constraint(equalTo: likeIcon.centerYAnchor),
                            likesCountsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
 
                            postDescriptionLabel.topAnchor.constraint(equalTo: likeIcon.bottomAnchor, constant: 0),
