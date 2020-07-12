@@ -24,7 +24,7 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
 //    let navBar = UINavigationController(rootViewController: TabBarController())
 
     var delegate: CellTappedDelegate?
-//    var showUsers: LikesTappedDelegate
+    var showUsers: LikesTappedDelegate?
 
     var postID: Post.Identifier?
     var userID: User.Identifier?
@@ -84,6 +84,7 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         likesCountsLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         likesCountsLabel.textColor = .black
         likesCountsLabel.translatesAutoresizingMaskIntoConstraints = false
+        likesCountsLabel.isUserInteractionEnabled = true
         
         return likesCountsLabel
     }()
@@ -130,6 +131,9 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         let userAvatarTapped = UITapGestureRecognizer(target: self, action: #selector(userNameTap))
         userAvatar.addGestureRecognizer(userAvatarTapped)
+        
+        let likesTapped = UITapGestureRecognizer(target: self, action: #selector(showUsersLikesPost))
+        likesCountsLabel.addGestureRecognizer(likesTapped)
         
         
     }
@@ -179,22 +183,20 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }
     
     @objc func showUsersLikesPost() {
-        let nextVC = UsersTableViewController()
-        nextVC.receivedUser = getUsersLikedPost()
-        navigationController?.pushViewController(nextVC, animated: true)
+        delegate?.showUsers(sender: getUsersLikedPost())
     }
     
     func getUsersLikedPost() -> [User] {
         let currentUser = DataProviders.shared.usersDataProvider.currentUser()
         guard let postID = postID else { return [currentUser] }
-        var users: [User]
-        var usersId = DataProviders.shared.postsDataProvider.usersLikedPost(with: postID)
+        var users: [User] = []
+        let usersId = DataProviders.shared.postsDataProvider.usersLikedPost(with: postID)
         
-//        guard let usersUnwrapped = usersId else { return [currentUser] }
         usersId?.forEach { userID in
             guard let user = DataProviders.shared.usersDataProvider.user(with: userID) else { return }
             users.append(user)
         }
+        return users
     }
 
     func setupViews() {

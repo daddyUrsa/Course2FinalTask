@@ -78,7 +78,9 @@ extension FeedViewController: UICollectionViewDataSource, CellTappedDelegate {
     }
     
     func showUsers(sender: [User]) {
-        <#code#>
+        let tableView = UsersTableViewController()
+        tableView.receivedUser = sender
+        navigationController?.pushViewController(tableView, animated: true)
     }
     
     
