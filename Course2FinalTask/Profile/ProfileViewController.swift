@@ -29,6 +29,7 @@ class ProfileViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
+        
         return collectionView
     }()
     
@@ -36,6 +37,8 @@ class ProfileViewController: UIViewController {
         let userAvatar = UIImageView()
         userAvatar.contentMode = .scaleAspectFit
         userAvatar.translatesAutoresizingMaskIntoConstraints = false
+        userAvatar.layer.cornerRadius = 35
+        userAvatar.clipsToBounds = true
         
         return userAvatar
     }()
@@ -75,8 +78,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProfileViews()
-        
-//        loadData()
+
         view.backgroundColor = .white
         self.title = receivedUser.username
         
@@ -90,7 +92,6 @@ class ProfileViewController: UIViewController {
         
         let followedTLTap = UITapGestureRecognizer(target: self, action: #selector(followedTLTapped))
         followingTL.addGestureRecognizer(followedTLTap)
-
     }
 
     func setupProfileViews() {
@@ -138,6 +139,7 @@ extension ProfileViewController {
         let nextVC = UsersTableViewController()
         guard let users: [User] = DataProviders.shared.usersDataProvider.usersFollowingUser(with: receivedUser.id) else { return }
         nextVC.receivedUser = users
+        nextVC.tableTitle = "Followers"
         navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -145,6 +147,7 @@ extension ProfileViewController {
         let nextVC = UsersTableViewController()
         guard let users: [User] = DataProviders.shared.usersDataProvider.usersFollowedByUser(with: receivedUser.id) else { return }
         nextVC.receivedUser = users
+        nextVC.tableTitle = "Following"
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }

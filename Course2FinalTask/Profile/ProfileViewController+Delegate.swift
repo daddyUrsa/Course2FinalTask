@@ -15,7 +15,6 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: width)
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }

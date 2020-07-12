@@ -14,11 +14,13 @@ class UsersTableViewController: UITableViewController {
 
     var receivedUser: [User] = DataProviders.shared.usersDataProvider.usersFollowedByUser(with: DataProviders.shared.usersDataProvider.currentUser().id)!
     
+    var tableTitle: String = ""
+    
     let tableCellId = "tableCellId"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Following"
+        self.title = tableTitle
         tableView.register(CustomUserCell.self, forCellReuseIdentifier: tableCellId)
         
 //        let cellTap = UITapGestureRecognizer(target: self, action: #selector())

@@ -15,21 +15,10 @@ protocol CellTappedDelegate: NSObjectProtocol {
     func showUsers(sender: [User])
 }
 
-protocol LikesTappedDelegate: NSObjectProtocol {
-    
-}
-
 class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
-    
-//    let navBar = UINavigationController(rootViewController: TabBarController())
-
     var delegate: CellTappedDelegate?
-    var showUsers: LikesTappedDelegate?
-
     var postID: Post.Identifier?
     var userID: User.Identifier?
-    
-//    var feedVC = FeedViewController()
 
     var userAvatar: UIImageView = {
         let userAvatar = UIImageView()
@@ -58,6 +47,7 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         userName.textColor = .black
         userName.translatesAutoresizingMaskIntoConstraints = false
         userName.isUserInteractionEnabled = true
+        
         return userName
     }()
 
@@ -94,6 +84,7 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         likeIcon.setImage(UIImage(named: "like"), for: .normal)
         likeIcon.addTarget(self, action: #selector(likeTapped), for: .touchUpInside)
         likeIcon.translatesAutoresizingMaskIntoConstraints = false
+        
         return likeIcon
     }()
     
@@ -112,7 +103,6 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         super.init(frame: .zero)
 
         setupViews()
-
     }
 
     required init?(coder: NSCoder) {
@@ -134,8 +124,6 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         let likesTapped = UITapGestureRecognizer(target: self, action: #selector(showUsersLikesPost))
         likesCountsLabel.addGestureRecognizer(likesTapped)
-        
-        
     }
     
     @objc func likeTapped() {
@@ -191,11 +179,11 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         guard let postID = postID else { return [currentUser] }
         var users: [User] = []
         let usersId = DataProviders.shared.postsDataProvider.usersLikedPost(with: postID)
-        
         usersId?.forEach { userID in
             guard let user = DataProviders.shared.usersDataProvider.user(with: userID) else { return }
             users.append(user)
         }
+        
         return users
     }
 
@@ -244,6 +232,7 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }
 }
 
+// TODO: Должно упрощать делать констрейнты, но не точно
 extension UIView {
     func noAutoresizingMask() {
         translatesAutoresizingMaskIntoConstraints = false

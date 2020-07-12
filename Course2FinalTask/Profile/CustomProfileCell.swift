@@ -21,7 +21,6 @@ class CustomProfileCell: UICollectionViewCell {
         super.init(frame: .zero)
 
         setupCell()
-
     }
     
     required init?(coder: NSCoder) {

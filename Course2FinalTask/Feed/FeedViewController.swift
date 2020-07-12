@@ -31,8 +31,6 @@ class FeedViewController: UIViewController {
         allPostsFollowedUsers()
         setupViews()
         setupConstraints()
-        
-
     }
 }
 
@@ -49,10 +47,6 @@ private extension FeedViewController {
                                      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                                      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-    }
-    
-    @objc func willShowUserProfile() {
-        
     }
 }
 

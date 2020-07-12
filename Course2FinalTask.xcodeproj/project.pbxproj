@@ -11,7 +11,7 @@
 		314ACC5E24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314ACC5D24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift */; };
 		314ACC6024AFBBAB00FBEE7D /* CustomProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314ACC5F24AFBBAB00FBEE7D /* CustomProfileCell.swift */; };
 		314CD92B24B9F44D002C9677 /* CustomUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314CD92A24B9F44D002C9677 /* CustomUserCell.swift */; };
-		317181E924A5472100201349 /* FeedView---.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E624A5472100201349 /* FeedView---.swift */; };
+		314CD92D24BBA41C002C9677 /* Comments in Resources */ = {isa = PBXBuildFile; fileRef = 314CD92C24BBA41C002C9677 /* Comments */; };
 		317181EA24A5472100201349 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E724A5472100201349 /* ProfileViewController.swift */; };
 		317181EB24A5472100201349 /* TabBarComtroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317181E824A5472100201349 /* TabBarComtroller.swift */; };
 		7484B05420441FD000BDE1A6 /* DataProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7484B05320441FD000BDE1A6 /* DataProvider.framework */; };
@@ -22,7 +22,6 @@
 		8F58592224A78C430061C86C /* Task in Resources */ = {isa = PBXBuildFile; fileRef = 8F58592124A78C430061C86C /* Task */; };
 		8FD67C9F24ACBF7C00BBD94E /* FeedCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD67C9E24ACBF7C00BBD94E /* FeedCustomCell.swift */; };
 		8FF4982D24AE20C0009103E7 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF4982C24AE20C0009103E7 /* MainNavigationController.swift */; };
-		8FF4982F24AE2A1E009103E7 /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF4982E24AE2A1E009103E7 /* TestController.swift */; };
 		8FF4983124AE2AB2009103E7 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF4983024AE2AB2009103E7 /* FeedViewController.swift */; };
 		8FF4983324AE5A6C009103E7 /* FeedViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF4983224AE5A6C009103E7 /* FeedViewController+DataSource.swift */; };
 		8FF4983524AE6777009103E7 /* FeedViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF4983424AE6777009103E7 /* FeedViewController+Delegate.swift */; };
@@ -47,7 +46,7 @@
 		314ACC5D24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Delegate.swift"; sourceTree = "<group>"; };
 		314ACC5F24AFBBAB00FBEE7D /* CustomProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileCell.swift; sourceTree = "<group>"; };
 		314CD92A24B9F44D002C9677 /* CustomUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserCell.swift; sourceTree = "<group>"; };
-		317181E624A5472100201349 /* FeedView---.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedView---.swift"; sourceTree = "<group>"; };
+		314CD92C24BBA41C002C9677 /* Comments */ = {isa = PBXFileReference; lastKnownFileType = text; path = Comments; sourceTree = "<group>"; };
 		317181E724A5472100201349 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		317181E824A5472100201349 /* TabBarComtroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarComtroller.swift; sourceTree = "<group>"; };
 		7484B05320441FD000BDE1A6 /* DataProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DataProvider.framework; sourceTree = "<group>"; };
@@ -59,7 +58,6 @@
 		8F58592124A78C430061C86C /* Task */ = {isa = PBXFileReference; lastKnownFileType = text; path = Task; sourceTree = "<group>"; };
 		8FD67C9E24ACBF7C00BBD94E /* FeedCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCustomCell.swift; sourceTree = "<group>"; };
 		8FF4982C24AE20C0009103E7 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
-		8FF4982E24AE2A1E009103E7 /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		8FF4983024AE2AB2009103E7 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		8FF4983224AE5A6C009103E7 /* FeedViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewController+DataSource.swift"; sourceTree = "<group>"; };
 		8FF4983424AE6777009103E7 /* FeedViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewController+Delegate.swift"; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 		31CD6ECB24AEA980001C30C8 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				317181E624A5472100201349 /* FeedView---.swift */,
 				8FF4983024AE2AB2009103E7 /* FeedViewController.swift */,
 				8FF4983224AE5A6C009103E7 /* FeedViewController+DataSource.swift */,
 				8FF4983424AE6777009103E7 /* FeedViewController+Delegate.swift */,
@@ -120,6 +117,7 @@
 		74B79256202B3254006BCB41 /* Course2FinalTask */ = {
 			isa = PBXGroup;
 			children = (
+				314CD92C24BBA41C002C9677 /* Comments */,
 				8F58592124A78C430061C86C /* Task */,
 				31CD6ECC24AEAA4A001C30C8 /* Profile */,
 				31CD6ECB24AEA980001C30C8 /* Feed */,
@@ -137,7 +135,6 @@
 				74B79257202B3254006BCB41 /* AppDelegate.swift */,
 				8FF4982C24AE20C0009103E7 /* MainNavigationController.swift */,
 				317181E824A5472100201349 /* TabBarComtroller.swift */,
-				8FF4982E24AE2A1E009103E7 /* TestController.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -228,6 +225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				314CD92D24BBA41C002C9677 /* Comments in Resources */,
 				74B7925F202B3254006BCB41 /* Assets.xcassets in Resources */,
 				8F58592224A78C430061C86C /* Task in Resources */,
 			);
@@ -244,7 +242,6 @@
 				8FF4983524AE6777009103E7 /* FeedViewController+Delegate.swift in Sources */,
 				314CD92B24B9F44D002C9677 /* CustomUserCell.swift in Sources */,
 				317181EB24A5472100201349 /* TabBarComtroller.swift in Sources */,
-				317181E924A5472100201349 /* FeedView---.swift in Sources */,
 				8FF4983324AE5A6C009103E7 /* FeedViewController+DataSource.swift in Sources */,
 				317181EA24A5472100201349 /* ProfileViewController.swift in Sources */,
 				74B79258202B3254006BCB41 /* AppDelegate.swift in Sources */,
@@ -252,7 +249,6 @@
 				314ACC6024AFBBAB00FBEE7D /* CustomProfileCell.swift in Sources */,
 				8FF4983124AE2AB2009103E7 /* FeedViewController.swift in Sources */,
 				314ACC5E24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift in Sources */,
-				8FF4982F24AE2A1E009103E7 /* TestController.swift in Sources */,
 				8F12F16424B8E36D00BBAEA3 /* UserTableViewController.swift in Sources */,
 				314ACC5C24AF3E3500FBEE7D /* ProfileViewController+DataSource.swift in Sources */,
 			);

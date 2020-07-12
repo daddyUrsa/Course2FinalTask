@@ -12,7 +12,6 @@ import DataProvider.Swift
 
 let cellID = "cellId"
 
-
 extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let posts = DataProviders.shared.postsDataProvider.findPosts(by: receivedUser.id) else { return 0}
