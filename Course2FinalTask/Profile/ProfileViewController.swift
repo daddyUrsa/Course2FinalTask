@@ -13,6 +13,13 @@ class ProfileViewController: UIViewController {
     
     var receivedUser: User = DataProviders.shared.usersDataProvider.currentUser()
     
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .cyan
+        return scrollView
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -49,6 +56,7 @@ class ProfileViewController: UIViewController {
         followersTL.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         followersTL.textColor = .black
         followersTL.translatesAutoresizingMaskIntoConstraints = false
+        followersTL.isUserInteractionEnabled = true
 
         return followersTL
     }()
@@ -59,6 +67,7 @@ class ProfileViewController: UIViewController {
         followingTL.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         followingTL.textColor = .black
         followingTL.translatesAutoresizingMaskIntoConstraints = false
+        followingTL.isUserInteractionEnabled = true
 
         return followingTL
     }()
@@ -67,7 +76,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         setupProfileViews()
-        loadData()
+//        loadData()
         view.backgroundColor = .white
         self.title = receivedUser.username
         
@@ -77,8 +86,10 @@ class ProfileViewController: UIViewController {
         followingTL.text = "Following: \(receivedUser.followsCount)"
 
         let followersTLTap = UITapGestureRecognizer(target: self, action: #selector(followersTLTapped))
-        followersTL.isUserInteractionEnabled = true
         followersTL.addGestureRecognizer(followersTLTap)
+        
+        let followedTLTap = UITapGestureRecognizer(target: self, action: #selector(followedTLTapped))
+        followingTL.addGestureRecognizer(followedTLTap)
 
         print("viewDidLoad ----- User ID: \(receivedUser.id.rawValue)")
         
@@ -95,13 +106,19 @@ class ProfileViewController: UIViewController {
     }
     
     func setupProfileViews() {
-        view.addSubview(userAvatar)
-        view.addSubview(userName)
-        view.addSubview(followersTL)
-        view.addSubview(followingTL)
-        view.addSubview(collectionView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(userAvatar)
+        scrollView.addSubview(userName)
+        scrollView.addSubview(followersTL)
+        scrollView.addSubview(followingTL)
+        scrollView.addSubview(collectionView)
         
-        NSLayoutConstraint.activate([userAvatar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+        NSLayoutConstraint.activate([scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                                     scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                                     scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     
+                                     userAvatar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
                                      userAvatar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
                                      userAvatar.widthAnchor.constraint(equalToConstant: 70),
                                      userAvatar.heightAnchor.constraint(equalToConstant: 70),
@@ -128,8 +145,16 @@ extension ProfileViewController {
     @objc func followersTLTapped() {
         print("tapped")
         let nextVC = UsersTableViewController()
-//        guard let user = DataProviders.shared.usersDataProvider.user(with: receivedUser.id) else { return }
-//        nextVC.receivedUser = user
+        guard let users: [User] = DataProviders.shared.usersDataProvider.usersFollowingUser(with: receivedUser.id) else { return }
+        nextVC.receivedUser = users
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func followedTLTapped() {
+        print("tapped")
+        let nextVC = UsersTableViewController()
+        guard let users: [User] = DataProviders.shared.usersDataProvider.usersFollowedByUser(with: receivedUser.id) else { return }
+        nextVC.receivedUser = users
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }

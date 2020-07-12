@@ -46,11 +46,6 @@ extension UsersTableViewController {
         let profileView = ProfileViewController()
         profileView.receivedUser = receivedUser[indexPath.row]
         navigationController?.pushViewController(profileView, animated: true)
-        print("Tap Tap Tap")
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
     }
 }
 

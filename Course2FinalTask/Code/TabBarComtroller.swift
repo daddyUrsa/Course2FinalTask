@@ -16,6 +16,3 @@ class TabBarController: UITabBarController {
     }
 }
 
-extension TabBarController {
-    
-}

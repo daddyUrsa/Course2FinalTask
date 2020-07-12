@@ -43,6 +43,7 @@ extension FeedViewController: UICollectionViewDataSource, CellTappedDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCustomCell
         cell.postID = posts[indexPath.item].id
+        cell.userID = posts[indexPath.item].author
         cell.userName.text = posts[indexPath.item].authorUsername
         cell.userAvatar.image = posts[indexPath.item].authorAvatar
         cell.postTime.text = getFormattedDate(date: posts[indexPath.item].createdTime, format: "MMM d, YYYY") + " at " + getFormattedDate(date: posts[indexPath.item].createdTime, format: "h:mm:ss a")
@@ -54,15 +55,10 @@ extension FeedViewController: UICollectionViewDataSource, CellTappedDelegate {
         }
         cell.backgroundColor = .white
         cell.delegate = self
-        cell.userID = posts[indexPath.item].author
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! FeedCustomCell
-        cell.delegate?.showUserProfile(sender: posts[indexPath.item].author)
-    }
     
     func showUserProfile(sender: User.Identifier) {
         let profileView = ProfileViewController()
