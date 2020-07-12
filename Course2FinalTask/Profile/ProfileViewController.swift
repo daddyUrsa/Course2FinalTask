@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
     
     var receivedUser: User = DataProviders.shared.usersDataProvider.currentUser()
     
-    let scrollView: UIScrollView = {
+    lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.backgroundColor = .cyan
@@ -74,8 +74,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupProfileViews()
+        
 //        loadData()
         view.backgroundColor = .white
         self.title = receivedUser.username
@@ -91,20 +91,8 @@ class ProfileViewController: UIViewController {
         let followedTLTap = UITapGestureRecognizer(target: self, action: #selector(followedTLTapped))
         followingTL.addGestureRecognizer(followedTLTap)
 
-        print("viewDidLoad ----- User ID: \(receivedUser.id.rawValue)")
-        
+    }
 
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear ----- User ID: \(receivedUser.id.rawValue)")
-    }
-    
-    func loadData() {
-        // code to load data from network, and refresh the interface
-        collectionView.reloadData()
-    }
-    
     func setupProfileViews() {
         view.addSubview(scrollView)
         scrollView.addSubview(userAvatar)
@@ -113,7 +101,7 @@ class ProfileViewController: UIViewController {
         scrollView.addSubview(followingTL)
         scrollView.addSubview(collectionView)
         
-        NSLayoutConstraint.activate([scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        NSLayoutConstraint.activate([scrollView.topAnchor.constraint(equalTo: view.topAnchor),
                                      scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                                      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                                      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -137,13 +125,16 @@ class ProfileViewController: UIViewController {
                                      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                                      collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+        
+        let contentHeight = 8 + userAvatar.frame.height + 8 + collectionView.collectionViewLayout.collectionViewContentSize.height
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: contentHeight)
+        print(contentHeight)
     }
 
 }
 
 extension ProfileViewController {
     @objc func followersTLTapped() {
-        print("tapped")
         let nextVC = UsersTableViewController()
         guard let users: [User] = DataProviders.shared.usersDataProvider.usersFollowingUser(with: receivedUser.id) else { return }
         nextVC.receivedUser = users
@@ -151,7 +142,6 @@ extension ProfileViewController {
     }
     
     @objc func followedTLTapped() {
-        print("tapped")
         let nextVC = UsersTableViewController()
         guard let users: [User] = DataProviders.shared.usersDataProvider.usersFollowedByUser(with: receivedUser.id) else { return }
         nextVC.receivedUser = users

@@ -26,6 +26,7 @@ class UsersTableViewController: UITableViewController {
 }
 
 extension UsersTableViewController {
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CustomUserCell = tableView.dequeueReusableCell(withIdentifier: tableCellId, for: indexPath) as! CustomUserCell
         let currentLastItem = receivedUser[indexPath.row]
@@ -47,6 +48,7 @@ extension UsersTableViewController {
         profileView.receivedUser = receivedUser[indexPath.row]
         navigationController?.pushViewController(profileView, animated: true)
     }
+    
 }
 
 

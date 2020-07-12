@@ -12,6 +12,11 @@ import DataProvider.Swift
 
 protocol CellTappedDelegate: NSObjectProtocol {
     func showUserProfile(sender: User.Identifier)
+    func showUsers(sender: [User])
+}
+
+protocol LikesTappedDelegate: NSObjectProtocol {
+    
 }
 
 class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
@@ -19,6 +24,7 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
 //    let navBar = UINavigationController(rootViewController: TabBarController())
 
     var delegate: CellTappedDelegate?
+//    var showUsers: LikesTappedDelegate
 
     var postID: Post.Identifier?
     var userID: User.Identifier?
@@ -129,7 +135,6 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }
     
     @objc func likeTapped() {
-        print(postID)
         guard let postID = postID else { return }
         guard let post = DataProviders.shared.postsDataProvider.post(with: postID) else { return }
         if post.currentUserLikesThisPost {
@@ -172,36 +177,55 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         guard let userID = userID else { return }
         delegate?.showUserProfile(sender: userID)
     }
+    
+    @objc func showUsersLikesPost() {
+        let nextVC = UsersTableViewController()
+        nextVC.receivedUser = getUsersLikedPost()
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    func getUsersLikedPost() -> [User] {
+        let currentUser = DataProviders.shared.usersDataProvider.currentUser()
+        guard let postID = postID else { return [currentUser] }
+        var users: [User]
+        var usersId = DataProviders.shared.postsDataProvider.usersLikedPost(with: postID)
+        
+//        guard let usersUnwrapped = usersId else { return [currentUser] }
+        usersId?.forEach { userID in
+            guard let user = DataProviders.shared.usersDataProvider.user(with: userID) else { return }
+            users.append(user)
+        }
+    }
 
     func setupViews() {
         postImage.addSubview(bigLike)
         contentView.addSubview(userAvatar)
-        
         contentView.addSubview(userName)
-        contentView.addSubview(postTime)
         contentView.addSubview(postImage)
+        contentView.addSubview(postTime)
         contentView.addSubview(likesCountsLabel)
         contentView.addSubview(postDescriptionLabel)
         contentView.addSubview(likeIcon)
         
-        NSLayoutConstraint.activate([bigLike.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                                     bigLike.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+        NSLayoutConstraint.activate([bigLike.centerYAnchor.constraint(equalTo: postImage.centerYAnchor),
+                                     bigLike.centerXAnchor.constraint(equalTo: postImage.centerXAnchor),
                                      
-                                     userAvatar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
+                                     userAvatar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
                                      userAvatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
                                      userAvatar.widthAnchor.constraint(equalToConstant: 35),
                                      userAvatar.heightAnchor.constraint(equalToConstant: 35),
 
                                      userName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
                                      userName.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 8),
-
-                                     postTime.bottomAnchor.constraint(equalTo: postImage.topAnchor, constant: -8),
-                                     postTime.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 8),
+                                     
                                      postImage.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 8),
                                      postImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
                                      postImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                                     postImage.heightAnchor.constraint(equalTo: contentView.widthAnchor),
+                                     
+                                     postTime.bottomAnchor.constraint(equalTo: postImage.topAnchor, constant: -8),
+                                     postTime.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 8),
                                        
-
                                      likeIcon.topAnchor.constraint(equalTo: postImage.bottomAnchor),
                                      likeIcon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
                                      likeIcon.widthAnchor.constraint(equalToConstant: 44),
@@ -210,10 +234,10 @@ class FeedCustomCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                                      likesCountsLabel.centerYAnchor.constraint(equalTo: likeIcon.centerYAnchor),
                                      likesCountsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
 
-                                     postDescriptionLabel.topAnchor.constraint(equalTo: likeIcon.bottomAnchor, constant: 0),
+                                     postDescriptionLabel.topAnchor.constraint(equalTo: likeIcon.bottomAnchor),
                                      postDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
                                      postDescriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-                                     postDescriptionLabel.heightAnchor.constraint(equalToConstant: 40)
+                                     postDescriptionLabel.heightAnchor.constraint(equalToConstant: 44)
                                     ])
     }
 }

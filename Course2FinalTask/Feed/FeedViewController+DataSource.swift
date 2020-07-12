@@ -36,6 +36,7 @@ func allPostsFollowedUsers() {
 }
 
 extension FeedViewController: UICollectionViewDataSource, CellTappedDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allPosts.count
     }
@@ -46,7 +47,11 @@ extension FeedViewController: UICollectionViewDataSource, CellTappedDelegate {
         cell.userID = posts[indexPath.item].author
         cell.userName.text = posts[indexPath.item].authorUsername
         cell.userAvatar.image = posts[indexPath.item].authorAvatar
-        cell.postTime.text = getFormattedDate(date: posts[indexPath.item].createdTime, format: "MMM d, YYYY") + " at " + getFormattedDate(date: posts[indexPath.item].createdTime, format: "h:mm:ss a")
+        if getFormattedDate(date: posts[indexPath.item].createdTime, format: "MMM d, YYYY") == getFormattedDate(date: Date(), format: "MMM d, YYYY") {
+            cell.postTime.text = "Today at " + getFormattedDate(date: posts[indexPath.item].createdTime, format: "h:mm:ss a")
+        } else {
+            cell.postTime.text = getFormattedDate(date: posts[indexPath.item].createdTime, format: "MMM d, YYYY") + " at " + getFormattedDate(date: posts[indexPath.item].createdTime, format: "h:mm:ss a")
+        }
         cell.postImage.image = posts[indexPath.item].image
         cell.likesCountsLabel.text = "Likes: \(posts[indexPath.item].likedByCount)"
         cell.postDescriptionLabel.text = posts[indexPath.item].description
@@ -62,15 +67,18 @@ extension FeedViewController: UICollectionViewDataSource, CellTappedDelegate {
     
     func showUserProfile(sender: User.Identifier) {
         let profileView = ProfileViewController()
-        guard let nextVC = tabBarController else { return }
+//        guard let tab = tabBarController else { return }
         guard let user = DataProviders.shared.usersDataProvider.user(with: sender) else { return }
 //        nextVC.receivedUser = user
-        nextVC.selectedIndex = 1
+        
         profileView.receivedUser = user
-        print("Readу to send ----- User ID: \(user.id.rawValue)")
-        profileView.viewDidLoad()
-
+        navigationController?.pushViewController(profileView, animated: true)
+//        tab.selectedIndex = 1
 //        navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    func showUsers(sender: [User]) {
+        <#code#>
     }
     
     

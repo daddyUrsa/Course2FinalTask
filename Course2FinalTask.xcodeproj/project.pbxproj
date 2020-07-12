@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		314ACC5A24AF3BCA00FBEE7D /* PhotoPostsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314ACC5924AF3BCA00FBEE7D /* PhotoPostsCustomCell.swift */; };
 		314ACC5C24AF3E3500FBEE7D /* ProfileViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314ACC5B24AF3E3500FBEE7D /* ProfileViewController+DataSource.swift */; };
 		314ACC5E24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314ACC5D24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift */; };
 		314ACC6024AFBBAB00FBEE7D /* CustomProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314ACC5F24AFBBAB00FBEE7D /* CustomProfileCell.swift */; };
@@ -44,7 +43,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		314ACC5924AF3BCA00FBEE7D /* PhotoPostsCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostsCustomCell.swift; sourceTree = "<group>"; };
 		314ACC5B24AF3E3500FBEE7D /* ProfileViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+DataSource.swift"; sourceTree = "<group>"; };
 		314ACC5D24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Delegate.swift"; sourceTree = "<group>"; };
 		314ACC5F24AFBBAB00FBEE7D /* CustomProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileCell.swift; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 				317181E724A5472100201349 /* ProfileViewController.swift */,
 				314ACC5B24AF3E3500FBEE7D /* ProfileViewController+DataSource.swift */,
 				314ACC5D24AF3F6700FBEE7D /* ProfileViewController+Delegate.swift */,
-				314ACC5924AF3BCA00FBEE7D /* PhotoPostsCustomCell.swift */,
 				314ACC5F24AFBBAB00FBEE7D /* CustomProfileCell.swift */,
 			);
 			path = Profile;
@@ -247,7 +244,6 @@
 				8FF4983524AE6777009103E7 /* FeedViewController+Delegate.swift in Sources */,
 				314CD92B24B9F44D002C9677 /* CustomUserCell.swift in Sources */,
 				317181EB24A5472100201349 /* TabBarComtroller.swift in Sources */,
-				314ACC5A24AF3BCA00FBEE7D /* PhotoPostsCustomCell.swift in Sources */,
 				317181E924A5472100201349 /* FeedView---.swift in Sources */,
 				8FF4983324AE5A6C009103E7 /* FeedViewController+DataSource.swift in Sources */,
 				317181EA24A5472100201349 /* ProfileViewController.swift in Sources */,
