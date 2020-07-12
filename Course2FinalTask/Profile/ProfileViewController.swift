@@ -69,7 +69,7 @@ class ProfileViewController: UIViewController {
         setupProfileViews()
         loadData()
         view.backgroundColor = .white
-        navigationController?.navigationBar.topItem?.title = receivedUser.username
+        self.title = receivedUser.username
         
         userAvatar.image = receivedUser.avatar
         userName.text = receivedUser.fullName

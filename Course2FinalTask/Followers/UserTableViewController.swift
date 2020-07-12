@@ -20,6 +20,8 @@ class UsersTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "Following"
         tableView.register(CustomUserCell.self, forCellReuseIdentifier: tableCellId)
+        
+//        let cellTap = UITapGestureRecognizer(target: self, action: #selector())
     }
 }
 
@@ -39,5 +41,17 @@ extension UsersTableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let profileView = ProfileViewController()
+        profileView.receivedUser = receivedUser[indexPath.row]
+        navigationController?.pushViewController(profileView, animated: true)
+        print("Tap Tap Tap")
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+    }
 }
+
 
