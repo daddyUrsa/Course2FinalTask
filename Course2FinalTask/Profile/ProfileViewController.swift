@@ -129,9 +129,7 @@ class ProfileViewController: UIViewController {
         
         let contentHeight = 8 + userAvatar.frame.height + 8 + collectionView.collectionViewLayout.collectionViewContentSize.height
         scrollView.contentSize = CGSize(width: view.bounds.width, height: contentHeight)
-        print(contentHeight)
     }
-
 }
 
 extension ProfileViewController {
