@@ -16,29 +16,16 @@ let users = DataProviders.shared.usersDataProvider.usersFollowingUser(with: Data
 
 let posts = DataProviders.shared.postsDataProvider.feed()
 
-var allPosts: [Post] = []
-
 func getFormattedDate(date: Date, format: String) -> String {
         let dateformat = DateFormatter()
         dateformat.dateFormat = format
         return dateformat.string(from: date)
 }
 
-func allPostsFollowedUsers() {
-    guard let users = users else { return }
-    for valueUser in users.enumerated() {
-        for valuePost in posts {
-            if valueUser.element.id == valuePost.author {
-                allPosts.append(valuePost)
-            }
-        }
-    }
-}
-
 extension FeedViewController: UICollectionViewDataSource, CellTappedDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allPosts.count
+        return posts.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -28,7 +28,7 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        allPostsFollowedUsers()
+//        allPostsFollowedUsers()
         setupViews()
         setupConstraints()
     }
