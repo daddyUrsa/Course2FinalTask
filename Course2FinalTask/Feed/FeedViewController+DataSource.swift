@@ -54,7 +54,9 @@ extension FeedViewController: UICollectionViewDataSource, CellTappedDelegate {
     func showUserProfile(sender: User.Identifier) {
         let profileView = ProfileViewController()
         guard let user = DataProviders.shared.usersDataProvider.user(with: sender) else { return }
+//        tabBarController?.selectedIndex = 1
         profileView.receivedUser = user
+//        print(profileView.receivedUser)
         navigationController?.pushViewController(profileView, animated: true)
     }
     

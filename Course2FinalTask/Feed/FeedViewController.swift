@@ -11,8 +11,6 @@ import DataProvider
 import DataProvider.Swift
 
 class FeedViewController: UIViewController {
-
-    let navBar = UINavigationController(rootViewController: TabBarController())
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,7 +26,6 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        allPostsFollowedUsers()
         setupViews()
         setupConstraints()
     }
